@@ -139,7 +139,7 @@ spec:
             - name: RABBITMQ_DEFAULT_VHOST
               value: {{ .Values.rabbitmqVhost | quote }}
             - name: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
-              value: {{ .Values.rabbitmqServerErlArgs | quote }}
+              value: {{ .Values.rabbitmqServerAdditionalErlArgs | quote }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           volumeMounts:
