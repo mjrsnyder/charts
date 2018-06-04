@@ -136,8 +136,6 @@ rabbitmqAmqpsSupport:
     # ssl_options.fail_if_no_peer_cert  = false
 
 
-rabbitmqServerErlArgs: "+P 2048 +t 5000000 +stbt db +zdbbl 32000"
-
 ## Number of replicas
 replicaCount: 3
 

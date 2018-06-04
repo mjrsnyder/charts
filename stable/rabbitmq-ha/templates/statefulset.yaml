@@ -94,7 +94,7 @@ spec:
             exec:
               command:
                 - rabbitmqctl
-                - status
+                - node_health_check 
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
@@ -102,7 +102,7 @@ spec:
             exec:
               command:
                 - rabbitmqctl
-                - status
+                - node_health_check
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
@@ -138,8 +138,6 @@ spec:
                   key: rabbitmq-password
             - name: RABBITMQ_DEFAULT_VHOST
               value: {{ .Values.rabbitmqVhost | quote }}
-            - name: RABBITMQ_SERVER_ERL_ARGS
-              value: {{ .Values.rabbitmqServerErlArgs | quote }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           volumeMounts:
