@@ -91,18 +91,14 @@ spec:
               containerPort: 5671
             {{- end }}
           livenessProbe:
-            exec:
-              command:
-                - rabbitmqctl
-                - node_health_check 
+            tcpSocket:
+              port: 5672
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
           readinessProbe:
-            exec:
-              command:
-                - rabbitmqctl
-                - node_health_check
+            tcpSocket:
+              port: 5672
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
